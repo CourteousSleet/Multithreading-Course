@@ -13,7 +13,7 @@ using std::unique_ptr;
 #include "headers/ZombieProcess.hpp"
 #include "headers/UnnamedPipesProcess.hpp"
 
-int main(int argc, char **argv) {
+int main() {
 
   uint_fast8_t option{};
   unique_ptr<IProcess> solution_executor{};

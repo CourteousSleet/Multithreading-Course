@@ -1,36 +1,32 @@
 #include "../headers/ZombieProcess.hpp"
 
 void ZombieProcess::Execute() {
-  pid_t cpid;
+  pid_t current_pid;
 
-  if ((cpid = fork())) {
+  if ((current_pid = fork())) {
     FILE *file = fopen("pid_parent", "w");
 
     if (!file) {
-      perror("fopen");
+      perror("File creation error\n");
       exit(EXIT_FAILURE);
     }
 
     fprintf(file, "%d", getpid());
-
-    if (fclose(file)) perror("fclose");
+    if (fclose(file)) perror("File close error\n");
 
     file = fopen("pid_child", "w");
-
     if (!file) {
-      perror("fopen");
+      perror("File creation error\n");
       exit(EXIT_FAILURE);
     }
 
-    fprintf(file, "%d", cpid);
+    fprintf(file, "%d", current_pid);
+    if (fclose(file)) perror("File close error\n");
 
-    if (fclose(file)) perror("fclose");
+    waitpid(current_pid, nullptr, 0);
 
-    waitpid(cpid, NULL, 0);
-
-  } else if (cpid == -1) perror("fork");
+  }
 
   pause();
-
   exit(EXIT_SUCCESS);
 }

@@ -11,5 +11,6 @@
   sigaddset(&mask, SIGTERM);
   sigprocmask(SIG_BLOCK, &mask, nullptr);
 
-  auto pause_value = pause();
+  pause();
+  exit(EXIT_SUCCESS);
 }
