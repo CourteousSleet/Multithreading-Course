@@ -12,6 +12,8 @@ using std::unique_ptr;
 #include "headers/IgnoringProcess.hpp"
 #include "headers/ZombieProcess.hpp"
 #include "headers/UnnamedPipesProcess.hpp"
+#include "headers/NamedChannels.hpp"
+#include "headers/SocketPair.hpp"
 
 int main() {
 
@@ -58,7 +60,7 @@ int main() {
               "Напишите программу, которая создает два именованных канала - /home/box/in.fifo и /home/box/out.fifo\n"
               "\n"
               "Пусть программа читает in.fifo и все прочитанное записывает в out.fifo.\n";
-      solution_executor = std::make_unique<IgnoringProcess>();
+      solution_executor = std::make_unique<NamedChannels>();
 
       break;
 
@@ -69,7 +71,7 @@ int main() {
               "один и находиться в /home/box/work.cpp). Процесс должен быть запущен.\n"
               "\n"
               "[Не оценивается] Потренируйтесь передавать дескрипторы через эту пару сокетов.\n";
-      solution_executor = std::make_unique<IgnoringProcess>();
+      solution_executor = std::make_unique<SocketPair>();
       break;
 
     default:

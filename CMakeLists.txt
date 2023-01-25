@@ -11,4 +11,4 @@ add_executable(Multithreading_Course
                 sources/ZombieProcess.cc
                 headers/ZombieProcess.hpp
                 sources/UnnamedPipesProcess.cc
-                headers/UnnamedPipesProcess.hpp)
+                headers/UnnamedPipesProcess.hpp sources/NamedChannels.cpp headers/NamedChannels.hpp sources/SocketPair.cpp headers/SocketPair.hpp)
